@@ -162,13 +162,13 @@ function initROICalculator() {
         const currentSales = parseInt(currentSalesInput?.value) || 10000;
         const dailyCustomers = parseInt(dailyCustomersInput?.value) || 80;
         
-        // Enhanced calculations with realistic growth factors
-        const growthFactor = Math.min(1.6, 1.3 + (dailyCustomers / 1000));
-        const projectedRevenue = Math.round(currentSales * growthFactor);
+        // Reduced calculations by 35% as requested - more conservative projections
+        const baseGrowthFactor = Math.min(1.39, 1.2 + (dailyCustomers / 1500)); // Reduced from 1.6
+        const projectedRevenue = Math.round(currentSales * baseGrowthFactor * 0.65); // 35% reduction
         
-        // Dynamic savings calculation based on business size
-        const savingsRate = Math.min(0.35, 0.25 + (currentSales / 100000));
-        const monthlySavings = Math.round(currentSales * savingsRate);
+        // Reduced savings calculation by 35%
+        const baseSavingsRate = Math.min(0.23, 0.16 + (currentSales / 150000)); // Reduced from 0.35
+        const monthlySavings = Math.round(currentSales * baseSavingsRate * 0.65); // 35% reduction
         
         const netIncrease = projectedRevenue - currentSales + monthlySavings;
         
